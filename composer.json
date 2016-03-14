@@ -1,0 +1,19 @@
+{
+    "name": "bobochen/91tdd-day2-homework",
+    "authors": [
+        {
+            "name": "Bobo Chen",
+            "email": "bobo52310@gmail.com"
+        }
+    ],
+    "keywords": ["tdd", "bdd", "behat", "homework", "unit test", "php", "testing"],
+    "require": {
+        "phpunit/phpunit": "^4.8",
+        "behat/behat": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tdd91\\":"src/"
+        }
+    }
+}
