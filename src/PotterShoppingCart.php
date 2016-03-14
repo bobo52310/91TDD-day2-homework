@@ -31,6 +31,8 @@ class PotterShoppingCart
         $this->total_price = 100 * $count_books;
         if (2 == $count_books) {
             $this->total_price *= 0.95;
+        } elseif (3 == $count_books) {
+            $this->total_price *= 0.9;
         }
     }
 
