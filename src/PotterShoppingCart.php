@@ -19,7 +19,7 @@ class PotterShoppingCart
 
     public function add(Book $book, $buy_n)
     {
-        for ($i = 1; $i <= $buy_n ; $i++) {
+        for ($i = 1; $i <= $buy_n; $i++) {
             $this->books[] = $book->getSeriesId();
         }
     }
@@ -29,29 +29,36 @@ class PotterShoppingCart
         // 將 books 進行分群組
         $book_grouped = $this->groupBooks($this->books);
 
+        // 分組計算折扣金額
         foreach ($book_grouped as $books) {
             $this->getDiscountByBookCount($books);
         }
     }
 
-    private function groupBooks($arr)
+    /**
+     * ex. 將 $books = [1,2,2,3,3,3] 分組成以下3組，方便分別計算折扣金額
+     * $book_unique = [
+     *      [1, 2, 3],
+     *      [2, 3],
+     *      [3],
+     * ];
+     * @param $books
+     * @return array
+     */
+    private function groupBooks($books)
     {
-        $arr_unique = [];
-        while ($arr != array_unique($arr)) {
-            $arr_unique[] = array_unique($arr);
-            $last_key = count($arr_unique) - 1;
+        $book_unique = [];
+        while ($books != array_unique($books)) {
+            $book_unique[] = array_unique($books);
+            $last_key = count($book_unique) - 1;
 
-            // 移除掉已經 unique 出來的元素
-            foreach ($arr_unique[$last_key] as $del_val) {
-                if(($key = array_search($del_val, $arr)) !== false) {
-                    unset($arr[$key]);
-                }
-            }
+            $books = array_diff_key($books, $book_unique[$last_key]);
         }
 
-        $arr_unique[] = $arr; // 已經完成分組
-        return $arr_unique;
+        $book_unique[] = $books;
+        return $book_unique;
     }
+
     public function getTotal()
     {
         return $this->total_price;
