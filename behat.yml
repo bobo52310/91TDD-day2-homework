@@ -1,0 +1,5 @@
+default:
+    suites:
+        PotterShoppingCart:
+            paths:    [ %paths.base%/features/PotterShoppingCart/books_discount.feature ]
+            contexts: [ PotterShoppingCartContext ]
