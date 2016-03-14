@@ -47,3 +47,12 @@ Feature: PotterShoppingCart
     And 第五集買了 1 本
     When 結帳
     Then 價格應為 375 元
+
+  Scenario: 一二集各買了一本，第三集買了兩本，價格應為100*3*0.9 + 100 = 370
+    Given 第一集買了 1 本
+    And 第二集買了 1 本
+    And 第三集買了 2 本
+    And 第四集買了 0 本
+    And 第五集買了 0 本
+    When 結帳
+    Then 價格應為 370 元
