@@ -1,5 +1,8 @@
 <?php
 
+use Tdd91\PotterShoppingCart;
+use Tdd91\Book;
+
 class PotterShoppingCartContext extends FeatureContext
 {
     protected $PotterShoppingCart;
