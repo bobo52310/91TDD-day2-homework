@@ -9,6 +9,14 @@ class PotterShoppingCart
 
     protected $total_price = 0;
 
+    protected $discount = [
+        1 => 1.0,
+        2 => 0.95,
+        3 => 0.9,
+        4 => 0.8,
+        5 => 0.75,
+    ];
+
     /**
      * PotterShoppingCart constructor.
      */
@@ -65,15 +73,8 @@ class PotterShoppingCart
     {
         $count_books = count($books);
         $group_price = 100 * $count_books;
-        if (2 == $count_books) {
-            $group_price *= 0.95;
-        } elseif (3 == $count_books) {
-            $group_price *= 0.9;
-        } elseif (4 == $count_books) {
-            $group_price *= 0.8;
-        } elseif (5 == $count_books) {
-            $group_price *= 0.75;
-        }
+        $group_price *= $this->discount[$count_books];
+
         $this->total_price += $group_price;
     }
 }
