@@ -31,18 +31,7 @@ class PotterShoppingCart
         $book_grouped = $this->groupBooks($this->books);
 
         foreach ($book_grouped as $books) {
-            $count_books = count($books);
-            $group_price = 100 * $count_books;
-            if (2 == $count_books) {
-                $group_price *= 0.95;
-            } elseif (3 == $count_books) {
-                $group_price *= 0.9;
-            } elseif (4 == $count_books) {
-                $group_price *= 0.8;
-            } elseif (5 == $count_books) {
-                $group_price *= 0.75;
-            }
-            $this->total_price += $group_price;
+            $this->getDiscountByBookCount($books);
         }
     }
 
@@ -67,5 +56,24 @@ class PotterShoppingCart
     public function getTotal()
     {
         return $this->total_price;
+    }
+
+    /**
+     * @param $books
+     */
+    protected function getDiscountByBookCount($books)
+    {
+        $count_books = count($books);
+        $group_price = 100 * $count_books;
+        if (2 == $count_books) {
+            $group_price *= 0.95;
+        } elseif (3 == $count_books) {
+            $group_price *= 0.9;
+        } elseif (4 == $count_books) {
+            $group_price *= 0.8;
+        } elseif (5 == $count_books) {
+            $group_price *= 0.75;
+        }
+        $this->total_price += $group_price;
     }
 }
