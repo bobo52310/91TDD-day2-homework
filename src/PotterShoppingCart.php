@@ -33,6 +33,8 @@ class PotterShoppingCart
             $this->total_price *= 0.95;
         } elseif (3 == $count_books) {
             $this->total_price *= 0.9;
+        } elseif (4 == $count_books) {
+            $this->total_price *= 0.8;
         }
     }
 
