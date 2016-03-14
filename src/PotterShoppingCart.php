@@ -17,17 +17,8 @@ class PotterShoppingCart
         5 => 0.75,
     ];
 
-    /**
-     * PotterShoppingCart constructor.
-     */
-    public function __construct()
-    {
-    }
-
     public function add(Book $book, $buy_n)
     {
-        if (0 == $buy_n) return false;
-
         for ($i = 1; $i <= $buy_n ; $i++) {
             $this->books[] = $book->getSeriesId();
         }
